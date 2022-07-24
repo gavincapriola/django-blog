@@ -1,10 +1,24 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+
+posts = [
+    {
+        'author': 'John Doe',
+        'title': 'Blog Post One',
+        'body': 'first',
+        'created_date': 'July 23, 2022'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post Two',
+        'body': 'second',
+        'created_date': 'July 23, 2022'
+    }
+]
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the blog home.")
+    return render(request, 'blog/index.html', {'posts': posts})
 
 
 def about(request):
-    return HttpResponse("This is the about page.")
+    return render(request, 'blog/about.html', {'title': 'About'})
