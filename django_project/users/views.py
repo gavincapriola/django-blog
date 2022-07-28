@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from .forms import UserRegisterForm
+from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
 
 
 def register(request):
@@ -21,4 +21,20 @@ def register(request):
 
 @login_required  # This decorator makes sure that the user is logged in
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(
+            request.POST, request.files, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            messages.success(
+                request, "Your account has been updated!")
+            u_form.save()
+            p_form.save()
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {'u_form': u_form, 'p_form': p_form}
+
+    return render(request, 'users/profile.html', context)
