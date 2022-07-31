@@ -24,7 +24,7 @@ def profile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(
-            request.POST, request.files, instance=request.user.profile)
+            request.POST, request.FILES, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             messages.success(
                 request, "Your account has been updated!")
