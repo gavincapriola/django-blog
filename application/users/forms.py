@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils.html import mark_safe
@@ -51,3 +51,20 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['avatar']
+
+class ChangePasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        label='Current Password',
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    new_password1 = forms.CharField(
+        label='New Password',
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        help_text=mark_safe('<ul><li>Your password can\'t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can\'t be a commonly used password.</li><li>Your password can\'t be entirely numeric.</li></ul>'))
+    new_password2 = forms.CharField(
+        label='Confirm New Password',
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        help_text='Enter the same password as before, for verification.')
+
+    class Meta:
+        model = User
+        fields = ['old_password', 'new_password1', 'new_password2']
