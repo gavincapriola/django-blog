@@ -7,12 +7,16 @@
 
 Make sure you have [Python3](https://www.python.org/download/) installed on your supported operating system.
 
-```shell
+```
 sudo apt-get install python3
 sudo apt install python3-pip
-pip3 install -r requirements.txt
+
+Unix/macOS                   Windows
+python3 -m venv venv         py -m venv venv
+source venv/bin/activate     .\venv\Scripts\activate
 ```
 ```shell
+pip3 install -r requirements.txt
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver
