@@ -1,4 +1,9 @@
-### Building a Blog app with Django
+## Building a Blog app with Django
+
+[![contributors](https://img.shields.io/github/contributors/gavincapriola/django-blog)](https://github.com/gavincapriola/django-blog/graphs/contributors)
+[![forks](https://img.shields.io/github/forks/gavincapriola/django-blog)](https://github.com/gavincapriola/django-blog/fork)
+[![stars](https://img.shields.io/github/stars/gavincapriola/django-blog)](https://github.com/gavincapriola/django-blog/stargazers)
+[![issues](https://img.shields.io/github/issues/gavincapriola/django-blog)](https://github.com/gavincapriola/django-blog/issues)
 
 Make sure you have [Python3](https://www.python.org/download/) installed on your supported operating system.
 
@@ -12,6 +17,8 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver
 ```
+
+---
 
 ### :handshake: Contributing
 
