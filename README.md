@@ -17,7 +17,7 @@ source venv/bin/activate            .\venv\Scripts\activate
 
 pip3 install -r requirements.txt    pip install -r requirements.txt
 python3 manage.py makemigrations    py manage.py makemigrations
-python3 manage.py migrate           py manage.py makemigrations
+python3 manage.py migrate           py manage.py migrate
 python3 manage.py runserver         py manage.py runserver
 ```
 
